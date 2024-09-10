@@ -38,6 +38,8 @@ public class EmailService {
     }
 
     private String createEmailContent(String fromEmail, String text, String category) {
+        // \n 문자를 <br>로 변환
+        String formattedText = text.replace("\n", "<br>");
         return String.format(
                 "<html><body>" +
                         "<p><strong>발신자:</strong> %s</p>" +
@@ -45,7 +47,7 @@ public class EmailService {
                         "<p>%s</p>" +
                         "<p><strong>카테고리:</strong> %s</p>" +
                         "</body></html>",
-                fromEmail, text, category
+                fromEmail, formattedText, category
         );
     }
 }
